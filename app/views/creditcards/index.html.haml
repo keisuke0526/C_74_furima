@@ -1,0 +1,28 @@
+.creditcards-main
+  = render partial: "header_creditcards"
+  .creditcards-main__box
+    %section.header-title
+      %h1 支払い方法
+    .creditcards-main__box__content
+      %section.creditcard-section
+        %h2 クレジットカード
+      - if @card.present?
+        = form_with url: "/creditcards/new", method: :delete, local: true do |f|
+          .container
+            .container__info
+              = image_tag "#{@card_image}", width: "34", height: "20", alt: "creditcard"
+              %p 番号
+              = "**** **** " + @card_infomation.last4
+              %p 有効期限
+              - exp_month = @card_infomation.exp_month.to_s
+              - exp_year = @card_infomation.exp_year.to_s.slice(2, 3)
+              = exp_month + "/" + exp_year
+            .container__btn
+              %input{type: "hidden", name: "cards_id", value: ""}
+              = f.submit "削除する", class: "creditcard__delete--btn" 
+      - else
+        .create-card
+          = link_to "クレジットカードを追加する", new_creditcard_path, class: "create-card-btn"
+  = render partial: "footer_creditcards" 
+            
+          

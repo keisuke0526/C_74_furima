@@ -1,0 +1,75 @@
+.creditcards-main { 
+  background-color: $bg-wh;
+  &__box {
+    background-color: $main-wh;
+    min-height: 360px;
+    width: 700px;
+    margin: 0 auto;
+      .header-title {
+        height: 99px;
+        width: 700px;
+        line-height: 99px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0 auto;
+        border-top:solid 1px #f3f3f3;
+        border-bottom:solid 1px #f3f3f3;
+      }
+      &__content {
+        height: 300px;
+        .creditcard-section {
+          line-height: 133px;
+          margin:0 auto;
+          width: 375px;
+          h2 {
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+        .container {
+          width: 350px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          &__info {
+            p {
+              display: block;
+              height: 30px;
+              padding-top: 6px;
+            }
+          }
+          &__btn {
+            height: 50px;
+            width: 100px;
+            input {
+              height: 32px;
+              width: 72px;
+              color: red;
+              border: solid 1px;
+              border-color: red;
+              border-radius: 4px;
+              background-color: white;
+            }
+          }
+        }
+      }
+      .create-card {
+        text-align: center;
+        margin: 0 auto;
+        height: 48px;
+        width: 375px;
+        font-size: 17px;
+        border-bottom: solid 1px #f3f3f3;
+
+
+        .create-card-btn {
+          background-color: $main-bu;
+          border-radius: 5px;
+          line-height: 48px;
+          color: white;
+          display: block;
+        }
+      }  
+  } 
+}

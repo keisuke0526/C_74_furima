@@ -1,0 +1,156 @@
+.main__box__left {
+  display: flex;
+  justify-content: center;
+  &__contents {
+    width: 700px;
+    background-color: $main-wh;
+    padding-bottom: 32px;
+    &__title {
+      height: 99px;
+      text-align: center;
+      border-bottom: solid 1px #f3f3f3;
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 99px;
+      }
+    }
+
+    .cardForm {
+      display: flex;
+      justify-content: center;
+      border-radius: 4px;
+      .form {
+        &__contents {
+          &__content {
+            &__left {
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              font-weight: 600;
+              padding: 32px 0 16px 0;
+              p {
+                height: 16px;
+                width: 32px;
+                background-color: $main-bu;
+                color: $main-wh;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 16px;
+                padding: 0 4px;
+                margin-left: 8px;
+              }
+            }
+            &__right {
+              display: flex;
+              padding-top: 4px;
+              #card_number {
+                height: 48px;
+                width: 375px;
+                text-indent: 20px;
+                border-radius: 4px;
+                border: solid 1px #ccc;
+                margin-bottom: 6px;
+              }
+        
+              #exp_month {
+                height: 48px;
+                width: 150px;
+                font-size: 16px;
+                border-radius: 4px;
+                border: solid 1px #ccc;
+                padding: 0 56px 0 16px;
+                cursor: pointer;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-image: url(/assets/icon/down-arrow.png);
+                background-repeat: no-repeat;
+                background-size: 12px 12px;
+                background-position: right 10px center;
+                
+              }
+              
+              #exp_year {
+                height: 48px;
+                width: 150px;
+                font-size: 16px;
+                border-radius: 4px;
+                border: solid 1px #ccc;
+                padding: 0 56px 0 16px;
+                cursor: pointer;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-image: url(/assets/icon/down-arrow.png);
+                background-repeat: no-repeat;
+                background-size: 12px 12px;
+                background-position: right 10px center;
+              }
+
+              P {
+                width: 46px;
+                font-size: 14px;
+                line-height: 48px;
+                text-align: center;
+              }
+
+              #cvc {
+                height: 48px;
+                width: 375px;
+                text-indent: 20px;
+                border-radius: 4px;
+                border: solid 1px #ccc;
+                margin-bottom: 6px;
+              }
+            }
+            &__back {
+              &__item {
+                text-align: right;
+                span {
+                 display: inline-block;
+                 height: 14px;
+                 width: 14px;
+                 color: $main-wh;
+                 line-height: 14px;
+                 font-size: 12px;
+                 text-align: center;
+                 border-radius: 50%;
+                 background-color: rgb(0, 149, 238);
+                }
+                p {
+                  display: inline-block;
+                  color: rgb(0, 149, 238);
+                  font-size: 12px;
+                }
+              }
+            }
+
+            #token_submit {
+              min-height: 48px;
+              width: 100%;
+              font-size: 17px;
+              font-weight: 600;
+              color: $main-wh;
+              background-color: $main-bu;
+              border: none;
+              border-radius: 4px;
+              margin-top: 32px;
+              cursor: pointer;
+            }
+            .token_submit:hover {
+              background-color: #34aeb3;
+            } 
+            .return-btn {
+              font-size: 12px;
+              color: #0095ee;
+              display: block;
+              text-align: center;
+              padding-top: 32px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

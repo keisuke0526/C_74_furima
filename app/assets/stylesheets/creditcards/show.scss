@@ -1,0 +1,164 @@
+.purchaseConfirmation {
+  background-color: $bg-wh;
+  &__head {
+    background-color: $bg-wh;
+  }
+  &__main {
+    &__content {
+      width: 700px;
+      margin: 0 auto;
+      background-color: $main-wh;
+      &__title {
+        height: 99px;
+        width: 350px;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 99px;
+        margin: 0 auto;
+        border-bottom: solid 1px #f3f3f3;
+      }
+      &__item {
+        min-height: 100px;
+        width: 350px;
+        border-bottom: solid 1px #f3f3f3;
+        margin:0 auto;
+        padding: 24px 0 12px 0;
+        text-align: center;
+        &__details {
+          text-align: center;
+          &__name {
+            padding-bottom: 13px;
+            font-size: 15px;
+          }
+          &__price {
+            width: 175px;
+            margin: 0 auto;
+            padding: 0 0 13px 13px;
+            display: flex;
+            &__money {
+              font-size: 15px;
+            }
+            &__tax {
+              min-width: 125px;
+              font-size: 12px;
+              padding: 2px;
+            }
+          }
+        }
+      }
+      &__payment {
+        height: 125px;
+        width: 350px;
+        border-bottom: solid 1px #f3f3f3;
+        margin: 0 auto;
+        padding-top: 18px;
+        &__box {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &__text {
+            font-size: 15px;
+            font-weight: 600;
+          }
+          &__price {
+            font-size: 30px;
+            font-weight: 600;
+          }
+        }
+        &__point {
+          display: flex;
+          justify-content: left;
+          padding-top: 12px;
+          &__text {
+            font-size: 12px;
+            color: lightgray;
+          }
+          &__figure {
+            font-size: 12px;
+            color: lightgray;
+            padding-left: 3px;
+          }
+        }
+      }
+      &__card {
+        width: 350px;
+        border-bottom: solid 1px #f3f3f3;
+        margin: 0 auto;
+        padding: 18px 0;
+        &__method {
+          display: flex;
+          justify-content: space-between;
+          &__text {
+            font-size: 15px;
+          }
+          &__change {
+            a {
+              font-size: 15px;
+              color: blue;
+            }
+          }
+        }
+        &__info {
+          &__text {
+            font-size: 15px;
+            padding-top: 6px;
+          }
+          &__number {
+            font-size: 15px;
+          }
+          &__date {
+            font-size: 15px;
+            padding-top: 6px;
+          }
+        }
+      }
+      &__address {
+        width: 350px;
+        border-bottom: solid 1px #f3f3f3;
+        margin: 0 auto;
+        padding: 18px 0;
+        &__info {
+          display: flex;
+          justify-content: space-between;
+          &__text {
+            font-size: 15px;
+          }
+          &__change {
+            a {
+              font-size: 15px;
+              color: blue;
+            }
+          }
+        }
+        &__details {
+          font-size: 15px;
+        }
+      }
+      &__btn {
+        height: 150px;
+        width: 700px;
+        display: flex;
+        align-items: center;
+        &__pic {
+          margin: 0 auto;
+          text-align: center;
+          P {
+            font-size: 17px;
+            font-weight: 600;
+            background-color: #3ccace;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            line-height: 48px;
+            a {
+              display: block;
+              width: 350px;
+              color: $main-wh;
+            }
+          }
+        }
+      }
+    }
+  }
+}

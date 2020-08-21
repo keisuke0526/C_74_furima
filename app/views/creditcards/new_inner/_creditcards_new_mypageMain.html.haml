@@ -1,0 +1,46 @@
+.main__box__left
+  .main__box__left__contents
+    .main__box__left__contents__title
+      %h1 クレジットカード情報入力
+    = form_with url: creditcards_path, method: :post, class: "cardForm" ,id: "card_tokens", local: true, html: { name: 'inputForm' } do |f|
+      .form
+        .form__contents
+          .form__contents__content
+            .form__contents__content__left
+              = f.label :"カード番号", maxlength: "16", class: "card-comment"
+              %p 必須
+            .form__contents__content__right 
+              = f.text_field :card_number, placeholder: "半角英数のみ", id: "card_number"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266",width:"49px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266",width:"34px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?238737266",width:"30px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266",width:"32px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266",width:"21px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266",width:"32px",height:"20px"
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266",width:"32px",height:"20px"
+            
+            .form__contents__content__left
+              = f.label :"有効期限", class: "card-comment"
+              %p 必須
+            .form__contents__content__right 
+              = f.select :exp_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), id: "exp_month"
+              %p 月
+              = f.select :exp_year, options_for_select(["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"]), id: "exp_year"
+              %p 年
+
+
+            .form__contents__content__left
+              = f.label :"セキュリティーコード", class: "card-comment"
+              %p 必須
+            .form__contents__content__right 
+              = f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+            .form__contents__content__back
+              .form__contents__content__back__item
+                = link_to do
+                  %span ? 
+                  %p カード裏面の番号とは？
+            #card_token
+              = f.submit "登録する", id: "token_submit"
+              = link_to "もどる", root_path, class: "return-btn"
+
+              

@@ -1,0 +1,80 @@
+.purchaseConfirmation
+  %header.purchaseConfirmation__head
+    = render partial: "header_creditcards"
+  
+  .purchaseConfirmation__main
+    .purchaseConfirmation__main__content
+      .purchaseConfirmation__main__content__title
+        購入を確定しますか？
+      
+      .purchaseConfirmation__main__content__item
+        .purchaseConfirmation__main__content__item__img
+          //= image_tag "", size: "64x64"
+          = image_tag "/assets/mako_image.png", size: "150x100", alt: "商品"
+        .purchaseConfirmation__main__content__item__details
+          .purchaseConfirmation__main__content__item__details__name
+            //= @item.name
+            マコなり
+          .purchaseConfirmation__main__content__item__details__price
+            .purchaseConfirmation__main__content__item__details__price__money
+              -#= "￥" + "#{@item.price}"
+              ￥1000
+            .purchaseConfirmation__main__content__item__details__price__tax
+              (税込み) 送料込み
+          
+      .purchaseConfirmation__main__content__payment
+        .purchaseConfirmation__main__content__payment__box
+          .purchaseConfirmation__main__content__payment__box__text
+            支払い金額
+          .purchaseConfirmation__main__content__payment__box__price
+            -#= "￥" + "#{@item.price}"
+            ￥1000
+        .purchaseConfirmation__main__content__payment__point
+          .purchaseConfirmation__main__content__payment__point__text
+            ■ポイントを使用
+          .purchaseConfirmation__main__content__payment__point__figure
+            (所持ポイント: 0pt)
+      .purchaseConfirmation__main__content__card   
+        .purchaseConfirmation__main__content__card__method
+          .purchaseConfirmation__main__content__card__method__text
+            支払い方法
+          .purchaseConfirmation__main__content__card__method__change
+            = link_to "変更する", creditcards_path, class: "cardChange" 
+        .purchaseConfirmation__main__content__card__info
+          .purchaseConfirmation__main__content__card__info__text
+            クレジットカード
+          .purchaseConfirmation__main__content__card__info__number
+            //= "**** **** **** " + @card_information.last4
+            **** **** **** 1234
+          .purchaseConfirmation__main__content__card__info__date
+            %p 有効期限 
+            //- exp_month = @card_information.exp_month.to_s
+            //- exp_year = @card_information.exp_year.to_s.slice(2,3)
+            //= exp_month + " / " + exp_year
+            12 / 34
+          
+      .purchaseConfirmation__main__content__address
+        .purchaseConfirmation__main__content__address__info
+          .purchaseConfirmation__main__content__address__info__text
+            配送先
+          .purchaseConfirmation__main__content__address__info__change
+            = link_to "変更する",class: "addressChange"
+        .purchaseConfirmation__main__content__address__details
+          .purchaseConfirmation__main__content__address__details__number
+            -#= "〒" + "#{@address.postal_code.first(3)}" + "-" + "#{@address.postal_code.last(4)}"
+            = "〒" + "111" + "-" + "1111"
+          .purchaseConfirmation__main__content__address__details__street
+            -#= ShipFrom.data[@address.prefectures.to_i - 1][:name] + @address.municipality + @address.block_number + @address.building
+            東京都渋谷区1111111
+          .purchaseConfirmation__main__content__address__details__name
+            -#= @address.address_family_name + " " + @address.address_first_name
+            フリマ 太郎
+
+      .purchaseConfirmation__main__content__btn
+        .purchaseConfirmation__main__content__btn__pic
+          %p 
+            -#= link_to "購入する", "/cards/#{@item.id}/pay", method: :POST
+            = link_to "購入する"
+  
+  %footer.purchaseConfirmation__footer
+    = render partial: "footer_creditcards"

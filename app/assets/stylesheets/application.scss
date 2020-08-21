@@ -3,7 +3,12 @@
 @import "modules/header";
 @import "modules/footer";
 @import "modules/exhibitionBtn";
-@import "categories";
+@import "categories/categories";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import "creditcards/header_creditcards.scss";
+@import "creditcards/footer_creditcards.scss";
+@import "creditcards/new.scss";
+@import "creditcards/creditcards_new_mypageMain";
+@import "creditcards/index";
+@import "creditcards/show"

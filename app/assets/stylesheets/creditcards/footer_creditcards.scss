@@ -1,0 +1,23 @@
+.main__box__right {
+  height: 220px;
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  &__contents {
+    ul {
+      li {
+        font-size: 12px;
+        display: inline-block;
+        margin: 16px 0px 0px 16px;
+      }
+    }
+  }
+  &__logo {
+    padding-top: 30px;
+
+  }
+  p {
+    font-size: 12px;
+  }
+}
