@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def display_categories

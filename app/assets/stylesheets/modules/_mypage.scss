@@ -42,6 +42,7 @@
     border-radius: 3px;
     margin-top: 30px;
     .container__right__user {
+      height: 200px;
       display: flex;
       text-align: center;
       position: relative;
@@ -82,5 +83,96 @@
         }
       }
     }
+    .container-tab-notofication-todo {
+      .container-tabs {
+        display: flex;
+        text-align: center;
+        cursor: pointer;
+        &__item {
+          width: 50%;
+          font-size: 17px;
+          padding: 20px 60px;
+          display: inline-block;
+          background-color: #eee;
+          }
+        .active {
+          background-color: white;
+          display: inline-block;
+          }
+          h3 {
+            font-weight: bold;
+          }
+        }
+      }
+      .container-body {
+        width: 100%;
+        
+        &__item {
+          display: none;
+        }
+        .show {
+          height: 80px;
+          display: block;
+          background-color: white;
+          border-bottom: solid 1px #eee;
+          p {
+            padding-top: 10px;
+            font-size: 14px;
+            padding-left: 10px;
+            line-height: 2em;
+          }
+        }
+      }
+      .dealing-container {
+        margin-top: 50px;
+        h2 {
+          background-color: #fafafa;
+          padding: 25px 10px;
+          font-weight: bold;
+        }
+          .container-dealing-tabs {
+            background-color: white;
+            display: flex;
+            text-align: center;
+            cursor: pointer;
+            &__item {
+              width: 50%;
+              font-size: 17px;
+              padding: 20px 60px;
+              display: inline-block;
+              background-color: #eee;
+              }
+            .active2 {
+              background-color: white;
+              display: inline-block;
+            }
+              h3 {
+                font-weight: bold;
+            }
+          }
+          .dealing-body {
+            width: 100%;
+            &__item {
+              display: none;
+            }
+            .show2 {
+              height: 150px;
+              display: block;
+              background-color: white;
+              border-bottom: solid 1px #eee;
+              display: flex;
+              p {
+                display: block;
+                margin: 0 auto;
+                padding-top: 50px;
+                font-size: 20px;
+                padding-left: 10px;
+                line-height: 2em;
+                color: #ccc;
+
+              }
+            }
+          }
+      }
+    }
   }
-}

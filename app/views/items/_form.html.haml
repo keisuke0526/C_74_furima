@@ -1,0 +1,49 @@
+%ul
+  - # errorsに入っているエラー内容を出力する
+  - @item.errors.full_messages.each do |message|
+    %li= message
+= form_for @item do |f|
+  カテゴリー
+  \#{f.collection_select :category_id, Category.all, :id, :name}
+  %br/
+  ブランド
+  \#{f.text_field :brand}
+  %br/
+  商品名#{f.text_field :name}
+  %br/
+  商品説明#{f.text_field :item_explanation}
+  %br/
+  発送元地域
+  \#{f.collection_select :shippingarea_id, Shippingarea.all, :id, :name}
+  %br/
+  商品状態
+  \#{f.collection_select :itemcondition_id, Itemcondition.all, :id, :name}
+  %br/
+  配送料の負担
+  \#{f.collection_select :shippingcost_id, Shippingcost.all, :id, :name}
+  %br/
+  発送までの日数
+  \#{f.collection_select :shippingday_id, Shippingday.all, :id, :name}
+  %br/
+  配送方法
+  \#{f.collection_select :shippingmethod_id, Shippingmethod.all, :id, :name}
+  %br/
+  価格#{f.number_field :price}
+  %br/
+  #image-box
+    #previews
+      - if @item.persisted?
+        - @item.item_imgs.each_with_index do |image, i|
+          = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+    = f.fields_for :item_imgs do |image|
+      .js-file_group{"data-index" => "#{image.index}"}
+        = image.file_field :image, class: 'js-file'
+        %br/
+        %span.js-remove 削除
+      - if @item.persisted?
+        = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+    - if @item.persisted?
+      .js-file_group{"data-index" => "#{@item.item_imgs.count}"}
+        = file_field_tag :image, name: "item[item_imgs_attributes][#{@item.item_imgs.count}][image]", class: 'js-file'
+        .js-remove 削除
+  = f.submit

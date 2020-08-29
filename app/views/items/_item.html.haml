@@ -1,0 +1,25 @@
+.content
+  %p= item.name
+  %p
+    = item.item_explanation
+  %p
+    = item.category.name
+  %p
+    = item.brand
+  %p
+    = item.shippingarea.name
+  %p
+    = item.itemcondition.name
+  %p
+    = item.shippingcost.name
+  %p
+    = item.shippingday.name
+  %p
+    = item.shippingmethod.name
+  %p
+    = item.price
+    円
+  - item.item_imgs.each do |image|
+    = image_tag image.image.url
+    = link_to '編集', edit_item_path(item)
+    = link_to '削除', item_path(item), method: :delete
