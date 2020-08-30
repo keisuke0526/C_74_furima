@@ -57,8 +57,14 @@
           = link_to '#',class: 'side-list__item' do
             発送元・お届け先住所変更
         %li
-          = link_to '#',class: 'side-list__item' do
-            お支払い方法
+          = link_to new_creditcard_path, class: 'side-list__item' do
+            クレジットカード登録
+        %li
+          = link_to "#",class: 'side-list__item' do
+            クレジットカード再登録
+        %li
+          = link_to "#", method: :delete, class: 'side-list__item' do
+            クレジットカード削除
         %li
           = link_to '#',class: 'side-list__item' do
             メール/パスワード

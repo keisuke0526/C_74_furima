@@ -18,8 +18,8 @@ class Item < ApplicationRecord
   #belong_to_active_hash :item_size
   #belong_to :seller, class_name: "user"
   #belong_to :buyer, class_name: "user"
-  enum dealing:{shipped:0,transit:1,delivery:2,delivered:3}
-  #shipped=発送済み、transit=輸送中、delivery=配達中、delivered=到着済み
+  enum dealing:{sell:0,sold:1,shipped:2,transit:3,delivery:4,delivered:5}
+  #sell=出品中、sold=売却済み、shipped=発送済み、transit=輸送中、delivery=配達中、delivered=到着済み
   #参考画像:https://www.mercari.com/jp/help_center/article/132/
   validates :name, presence: true, length: { maximum: 40 }
   validates :item_explanation, presence: true, length: { maximum: 1000 }
@@ -31,5 +31,6 @@ class Item < ApplicationRecord
   validates :shippingmethod_id, presence: true
   validates :shippingcost_id, presence: true
   validates :shippingday_id, presence: true
+  validates :item_imgs, presence: true
   #validates :seller_id, presence: true
 end

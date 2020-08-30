@@ -1,7 +1,7 @@
 .headerUpper
   =link_to "#" do
     .headerUpper__link
-      =image_tag("/assets/logo/logo.png", alt:'FURIMA-logo', class: 'headerUpper__link__logo')
+      =image_tag("logo/logo.png", alt:'FURIMA-logo', class: 'headerUpper__link__logo')
   =form_for "#" ,class:'headerUpper__form' do |form|
     =form.text_field :content, class:'headerUpper__form__field', placeholder:"キーワードから探す"
     =form.button '' , class:'headerUpper__form__btn' do

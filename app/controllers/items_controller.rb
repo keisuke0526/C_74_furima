@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+       #@item.item_imgs.save
       redirect_to root_path, notice: 'Event was successfully created.'
     else
       @item.item_imgs.new if @item.item_imgs.length == 0
