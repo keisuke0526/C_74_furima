@@ -5,12 +5,12 @@ class CreditcardsController < ApplicationController
   before_action :card_present,only:[:index,:destroy]
   before_action :take_card, only:[:show, :pay]
   before_action :set_customer, only:[:index, :destroy]
-  before_action :set_card_infomation, only:[:index]
+  before_action :set_card_information, only:[:index]
   before_action :set_api_key
 
   def index
     if @card
-      @card_brand = @card_infomation.brand
+      @card_brand = @card_information.brand
       #画像を保存して使用した方がいいのか？
       case @card_brand
       when "Visa"
@@ -59,7 +59,7 @@ class CreditcardsController < ApplicationController
       redirect_to creditcards_path
     else
       set_customer
-      set_card_infomation
+      set_card_information
     end
   end
 
@@ -77,11 +77,11 @@ class CreditcardsController < ApplicationController
   def pay
     @item.update(buyer_id: current_user.id)
     Payjp::Charge.create(
-      amount: 1000,
+      amount: @item.price,
       customer: @card.customer_id,
       currency: 'jpy'
     )
-    redirect_to item_purchase_index_path(@item.id) #購入確認画面へ遷移
+    redirect_to root_path #購入確認画面へ遷移
   end
 
   private
@@ -91,7 +91,7 @@ class CreditcardsController < ApplicationController
   end
   
   def set_item
-   # @item = Item.find(params[:id])
+   @item = Item.find(params[:id])
    # @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -103,8 +103,8 @@ class CreditcardsController < ApplicationController
     @customer = Payjp::Customer.retrieve(@card.customer_id)
   end
 
-  def set_card_infomation
-    @card_infomation = @customer.cards.retrieve(@card.card_id)
+  def set_card_information
+    @card_information = @customer.cards.retrieve(@card.card_id)
   end
 
   def take_card

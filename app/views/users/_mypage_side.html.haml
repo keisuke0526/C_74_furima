@@ -1,0 +1,69 @@
+.side
+  %nav.side__nav
+    %ul.side-list
+      %li
+        = link_to user_path(current_user), class: 'side-list__item--gray' do
+          マイページ 
+      %li
+        = link_to '#', class: 'side-list__item' do
+          お知らせ
+      %li
+        = link_to '#', class: 'side-list__item' do
+          やることリスト
+      %li
+        = link_to '#', class: 'side-list__item' do
+          いいね！一覧
+      %li
+        = link_to '#', class: 'side-list__item' do
+          出品する
+      %li
+        = link_to '#', class: 'side-list__item' do
+          出品した商品 - 出品中
+      %li
+        = link_to '#', class: 'side-list__item' do
+          出品した商品 - 取引中
+      %li
+        = link_to '#', class: 'side-list__item' do
+          出品した商品 - 売却済み
+      %li
+        = link_to '#', class: 'side-list__item' do
+          購入した商品 - 取引中
+      %li
+        = link_to '#', class: 'side-list__item' do
+          購入した商品 - 過去の取引
+      %li
+        = link_to '#',class: 'side-list__item' do
+          ニュース一覧
+      %li
+        = link_to '#',class: 'side-list__item' do
+          評価一覧
+      %li
+        = link_to '#',class: 'side-list__item' do
+          ガイド
+      %li
+        = link_to '#',class: 'side-list__item' do
+          お問い合わせ
+
+    %h3.bold 設定
+    %ul.side-list
+      %li
+        = link_to '#',class: 'side-list__item' do
+          プロフィール
+      %li
+        = link_to '#',class: 'side-list__item' do
+          発送元・お届け先住所変更
+      %li
+        = link_to new_creditcard_path, class: 'side-list__item' do
+          クレジットカード登録
+      %li
+        = link_to creditcard_path, method: :delete, class: 'side-list__item', data: { confirm: '削除しますか？' }  do
+          クレジットカード削除
+      %li
+        = link_to '#',class: 'side-list__item' do
+          メール/パスワード
+      %li
+        = link_to '#',class: 'side-list__item' do
+          本人情報
+      %li
+        = link_to destroy_user_session_path, method: :delete, class: 'side-list__item', data: { confirm: 'ログアウトしますか？' }  do
+          ログアウト
