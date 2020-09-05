@@ -1,2 +1,18 @@
-%h2 登録が完了しました
-= link_to "トップへ戻る", root_path
+.header
+  = render partial: 'items/header'
+
+.registrations-new
+  .registrations-new__wrapper
+    .form-haad
+      登録が完了しました
+    .contener
+      .links-box
+        .links-box__mypage
+          = link_to "マイページ", user_path(current_user), class: 'links-box__mypage--btn'
+        .links-box__root
+          = link_to "トップへ戻る", root_path, class: 'links-box__root--btn'
+
+= render 'items/btmDl'
+.footer
+  = render partial: 'items/footer'
+= render partial: 'items/exhibitionBtn' 

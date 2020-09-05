@@ -1,15 +1,26 @@
-.sessions
-  アカウントをお持ちでない方はこちら
-  = link_to "新規会員登録", new_user_registration_path
+.header
+  = render partial: 'items/header'
 
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス'
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード'
-    .actions
-      = f.submit "ログイン"
+.registrations-new
+  .registrations-new__wrapper
+    .log-haad
+      .head-text アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", new_user_registration_path, class: 'signUp-btn'
+    .form-body
+      .form-body__inner
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス'
+          .field
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード'
+          .action
+            = f.submit "ログイン"
+
+= render 'items/btmDl'
+.footer
+  = render partial: 'items/footer'
+= render partial: 'items/exhibitionBtn' 

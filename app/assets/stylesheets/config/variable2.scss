@@ -12,3 +12,19 @@
     background-color: lightgray;
   }
 }
+
+@mixin link-btn {
+  display: inherit;
+  background-color: #3CCACE;
+  color:white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 18px;
+}
+
+@mixin link-hov {
+  &:hover {
+    opacity: 0.9;
+  }
+}

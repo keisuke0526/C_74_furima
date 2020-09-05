@@ -1,56 +1,78 @@
-会員情報入力
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :"ニックネーム"
-    %span 必須
-    %br/
-    = f.text_field :nickname, placeholder: '例）フリマ太郎'
-  .field
-    = f.label :"メールアドレス"
-    %span 必須
-    %br/
-    = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+.header
+  = render partial: 'items/header'
 
-  .field
-    = f.label :"パスワード"
-    %span 必須
-    - if @minimum_password_length
-      %em
-    %br/
-    = f.password_field :password, placeholder: '7文字以上の半角英数字' 
-    %br/
-    ※ 英字と数字の両方を含めて設定してください
-  .field
-    = f.label :"確認用パスワード"
-    %span 必須
-    %br/
-    = f.password_field :password_confirmation, placeholder: 'パスワードをもう一度入力してください' 
-  本人確認
-  %br/
-  安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-  .field
-    = f.label :"お名前(全角)"
-    %span 必須
-    %br/
-    = f.text_field :family_name, placeholder: '例）山田'
-  .field
-    = f.label :"お名前(全角)"
-    %br/
-    = f.text_field :first_name, placeholder: '例）彩'
-  .field
-    = f.label :"お名前カナ(全角)"
-    %br/
-    = f.text_field :family_name_kana, placeholder: '例）ヤマダ'
-  .field
-    = f.label :"お名前カナ(全角)"
-    %br/
-    = f.text_field :first_name_kana, placeholder: '例）アヤ'
-  .field
-    = f.select :birth_year, [*1900..2019].reverse, prompt: "--"
-    = f.select :birth_month, [*1..12], prompt: "--"
-    = f.select :birth_day, [*1..31], prompt: "--"
-  ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-  .actions
-    = f.submit "次へ進む"
--# = render "devise/shared/links"
+.registrations-new
+  .registrations-new__wrapper
+    .form-haad
+      会員情報入力
+    .form-body
+      .form-body__inner
+        %form#new_user.new_user{ "accept-charset": "UTF-8", action: "/user_registration", method: "post"}
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: @user
+          .field
+            = f.label :"ニックネーム"
+            %span.form-require 必須
+            %br/
+            = f.text_field :nickname, placeholder: '例）フリマ太郎'
+          .field
+            = f.label :"メールアドレス"
+            %span.form-require 必須
+            %br/
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+          .field
+            = f.label :"パスワード"
+            %span.form-require 必須
+            - if @minimum_password_length
+              %em
+            %br/
+            = f.password_field :password, placeholder: '7文字以上の半角英数字' 
+            %br/
+          .text-box
+            ※ 英字と数字の両方を含めて設定してください
+          .field
+            = f.label :"確認用パスワード"
+            %span.form-require 必須
+            %br/
+            = f.password_field :password_confirmation, placeholder: 'パスワードをもう一度入力してください' 
+          .text-box
+            %p 本人確認
+            %br/
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .field
+            = f.label :"お名前(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :family_name, placeholder: '例）山田'
+          .field
+            = f.label :"お名前(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name, placeholder: '例）彩'
+          .field
+            = f.label :"お名前カナ(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :family_name_kana, placeholder: '例）ヤマダ'
+          .field
+            = f.label :"お名前カナ(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name_kana, placeholder: '例）アヤ'
+          .field-birth
+            .field-birth__box
+              = f.label :生年月日
+              %span.form-require 必須
+              %br/
+              = f.select :birth_year, [*1900..2019].reverse, prompt: ""
+              = f.select :birth_month, [*1..12], prompt: ""
+              = f.select :birth_day, [*1..31], prompt: ""
+          %br/
+          ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .action
+            = f.submit "次へ進む"
+
+= render 'items/btmDl'
+.footer
+  = render partial: 'items/footer'
+= render partial: 'items/exhibitionBtn' 

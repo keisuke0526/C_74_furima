@@ -1,0 +1,46 @@
+@import "config/variable2";
+
+.registrations-new {
+  width: 100%;
+  height: auto;
+  background: #F5F5F5;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &__wrapper {
+    width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+  }
+  .form-haad {
+    font-size: 20px;
+    text-align: center;
+    padding: 16px;
+    font-weight: bold;
+    border-bottom: solid 1px;
+    border-color: whitesmoke;
+    }
+    .contener {
+      .links-box {
+        font-size: 14px;
+        width: 343px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        &__mypage {
+          padding: 15px 0;
+          &--btn {
+            @include link-btn;
+            @include link-hov;
+          }
+        }
+        &__root {
+          padding-bottom: 30px;
+          &--btn {
+            @include link-btn;
+            @include link-hov;
+          }
+        }
+      }
+    }
+}

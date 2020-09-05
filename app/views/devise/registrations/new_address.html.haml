@@ -1,65 +1,67 @@
-商品送付先入力
-= form_for(@address, url:users_create_address_path) do |f|
-  = render "devise/shared/error_messages", resource: @address
-  .field
-    = f.label :"お名前(全角)"
-    %span 必須
-    %br/
-    = f.text_field :family_name, placeholder: '例）山田'
+.header
+  = render partial: 'items/header'
 
-  .field
-    = f.label :"お名前(全角)"
-    %span 必須
-    %br/
-    = f.text_field :first_name, placeholder: '例）彩'
+.registrations-new
+  .registrations-new__wrapper
+    .form-haad
+      商品送付先入力
+    .form-body
+      .form-body__inner
+        = form_for(@address, url:users_create_address_path) do |f|
+          = render "devise/shared/error_messages", resource: @address
+          .field
+            = f.label :"お名前(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :family_name, placeholder: '例）山田'
+          .field
+            = f.label :"お名前(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name, placeholder: '例）彩'
+          .field
+            = f.label :"お名前カナ(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :family_name_kana, placeholder: '例）ヤマダ'
+          .field
+            = f.label :"お名前カナ(全角)"
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name_kana, placeholder: '例）アヤ'
+          .field
+            = f.label :"郵便番号"
+            %span.form-require 必須
+            %br/
+            = f.text_field :postcode, placeholder: '郵便番号'
+          .field
+            = f.label :"都道府県"
+            %span.form-require 必須
+            %br/
+            = f.text_field :prefecture,  placeholder: '東京都' 
+          .field
+            = f.label :"市区町村"
+            %span.form-require 必須
+            %br/
+            = f.text_field :city,  placeholder: '渋谷区道玄坂' 
+          .field
+            = f.label :"番地"
+            %span.form-require 必須
+            %br/
+            = f.text_field :house_number,  placeholder: '2丁目23-12' 
+          .field
+            = f.label :"建物名"
+            %br/
+            = f.text_field :building,  placeholder: 'フォンティスビル７F' 
+          .field
+            = f.label :"電話番号"
+            %br/
+            = f.text_field :home_call_num,  placeholder: '例）090-1234-5678' 
 
-  .field
-    = f.label :"お名前カナ(全角)"
-    %span 必須
-    %br/
-    = f.text_field :family_name_kana, placeholder: '例）ヤマダ'
-
-  .field
-    = f.label :"お名前カナ(全角)"
-    %span 必須
-    %br/
-    = f.text_field :first_name_kana, placeholder: '例）アヤ'
-
-  .field
-    = f.label :"郵便番号"
-    %span 必須
-    %br/
-    = f.text_field :postcode, placeholder: '郵便番号'
-
-  .field
-    = f.label :"都道府県"
-    %span 必須
-    %br/
-    = f.text_field :prefecture,  placeholder: '東京都' 
-
-    .field
-    = f.label :"市区町村"
-    %span 必須
-    %br/
-    = f.text_field :city,  placeholder: '渋谷区道玄坂' 
-
-    .field
-    = f.label :"番地"
-    %span 必須
-    %br/
-    = f.text_field :house_number,  placeholder: '2丁目23-12' 
-
-    .field
-    = f.label :"建物名"
-    %span 任意
-    %br/
-    = f.text_field :building,  placeholder: 'フォンティスビル７F' 
-
-    .field
-    = f.label :"電話番号"
-    %span 任意
-    %br/
-    = f.text_field :home_call_num,  placeholder: '例）090-1234-5678' 
-
-  .actions
-    = f.submit "登録する"
+          .action
+            = f.submit "登録する"
+            
+= render 'items/btmDl'
+.footer
+  = render partial: 'items/footer'
+= render partial: 'items/exhibitionBtn' 
