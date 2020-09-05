@@ -16,8 +16,10 @@ class Item < ApplicationRecord
   #has_many :evaluations
   belongs_to :category
   #belong_to_active_hash :item_size
-  #belong_to :seller, class_name: "user"
-  #belong_to :buyer, class_name: "user"
+  belongs_to :seller, foreign_key: :seller_id, class_name: "User"
+  #class_name: "User"の部分、クラス、テーブル名はrailsの場合大文字から始めるのが原則
+  belongs_to :buyer, foreign_key: :buyer_id, class_name: "User", optional: true
+  #belongs_toは必ず値が入らなければいけない。この場合buyer_idは出品の時はnilであるので、optional: trueをつけることによって、nilでもいいよ！という風にする
   enum dealing:{sell:0,sold:1,shipped:2,transit:3,delivery:4,delivered:5}
   #sell=出品中、sold=売却済み、shipped=発送済み、transit=輸送中、delivery=配達中、delivered=到着済み
   #参考画像:https://www.mercari.com/jp/help_center/article/132/

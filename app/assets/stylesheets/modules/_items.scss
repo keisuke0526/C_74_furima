@@ -236,6 +236,7 @@ li{
       height: 245px;
       background-color: $main-wh;
       &__details{
+        position: relative;
         &__img{
           width: 220px;
           height: 150px;
@@ -265,6 +266,16 @@ li{
         }
         &:hover{
           opacity: 0.5;
+        }
+        .item__sold {
+          position: absolute;
+          top: 50px;
+          left: 50px;
+          &__inner {
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+          }
         }
       }
     }

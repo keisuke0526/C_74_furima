@@ -81,38 +81,25 @@
         =link_to "#" do
           新規投稿商品
       %ul.main__pickupCategory__itemLists
-        %li.main__pickupCategory__itemLists__list
-          .main__pickupCategory__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/ee.jpeg", alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img")
-              .main__pickupCategory__itemLists__list__details__name ee
-              .main__pickupCategory__itemLists__list__details__price 1000円
-              .main__pickupCategory__itemLists__list__details__favo ★０
-              .main__pickupCategory__itemLists__list__details__tax (税込み)
-        %li.main__pickupCategory__itemLists__list
-          .main__pickupCategory__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p3.png", alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img")
-              .main__pickupCategory__itemLists__list__details__name product3
-              .main__pickupCategory__itemLists__list__details__price 30000円
-              .main__pickupCategory__itemLists__list__details__favo ★０
-              .main__pickupCategory__itemLists__list__details__tax (税込み)
-        %li.main__pickupCategory__itemLists__list
-          .main__pickupCategory__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p2.png", alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img")
-              .main__pickupCategory__itemLists__list__details__name product2
-              .main__pickupCategory__itemLists__list__details__price 20000円
-              .main__pickupCategory__itemLists__list__details__favo ★０
-              .main__pickupCategory__itemLists__list__details__tax (税込み)
-        %li.main__pickupCategory__itemLists__list
-          .main__pickupCategory__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p1.png", alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img")
-              .main__pickupCategory__itemLists__list__details__name product3
-              .main__pickupCategory__itemLists__list__details__price 10000円
-              .main__pickupCategory__itemLists__list__details__favo ★1
-              .main__pickupCategory__itemLists__list__details__tax (税込み)
+        - @items.each do |item|
+          %li.main__pickupCategory__itemLists__list
+            .main__pickupCategory__itemLists__list__details
+              -#商品詳細ページへのパスに変更する予定
+              = link_to creditcards_path(item.id) do
+                = image_tag (item.item_imgs.first.image.url), alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img"
+                - if item.buyer_id.present?
+                  .item__sold
+                    .item__sold__inner
+                      SoldOut
+                .main__pickupCategory__itemLists__list__details__name 
+                  = item.name
+                .main__pickupCategory__itemLists__list__details__price 
+                  = item.price
+                .main__pickupCategory__itemLists__list__details__favo
+                  ★０
+                .main__pickupCategory__itemLists__list__details__tax 
+                  (税込み)
+             
     %section.main__pickupBrand
       .main__pickupBrand__title ピックアップブランド
       .main__pickupBrand__archive

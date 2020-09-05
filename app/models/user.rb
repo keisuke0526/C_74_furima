@@ -21,6 +21,7 @@ class User < ApplicationRecord
   # has_many :comments, dependent: :destroy
   # has_many :favorites, dependent: :destroy
   # has_many :evaluations, dependent: :destroy
-  # has_many :seller_items, foreign_key: “seller_id”, class_name: “items”
-  # has_many :buyer_items, foreign_key: “buyer_id”, class_name: “items”
+  has_many :seller_items, foreign_key: :seller_id, dependent: :destroy
+  has_many :buyer_items, foreign_key: :buyer_id, dependent: :destroy
+  #理由はまだわからないのですが、dependent: :destroyをつけないとアソシエーションは組めなかったです
 end
