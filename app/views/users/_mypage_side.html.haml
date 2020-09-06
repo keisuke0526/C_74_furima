@@ -52,12 +52,12 @@
       %li
         = link_to '#',class: 'side-list__item' do
           発送元・お届け先住所変更
-      %li
-        = link_to new_creditcard_path, class: 'side-list__item' do
+      -#%li
+        -#= link_to new_creditcard_path, class: 'side-list__item' do
           クレジットカード登録
       %li
-        = link_to creditcard_path, method: :delete, class: 'side-list__item', data: { confirm: '削除しますか？' }  do
-          クレジットカード削除
+        = link_to creditcards_path, class: 'side-list__item' do
+          支払い方法
       %li
         = link_to '#',class: 'side-list__item' do
           メール/パスワード
@@ -65,5 +65,5 @@
         = link_to '#',class: 'side-list__item' do
           本人情報
       %li
-        = link_to destroy_user_session_path, method: :delete, class: 'side-list__item', data: { confirm: 'ログアウトしますか？' }  do
+        = link_to destroy_user_session_path, method: :delete, class: 'side-list__item', data: { confirm: 'ログアウトしますか？' } do 
           ログアウト
