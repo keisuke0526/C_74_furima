@@ -1,4 +1,10 @@
-=link_to "#" do
-  .exhibitionBtn
-    %p.exhibitionBtn__text 出品する
-    =image_tag("/assets/icon/icon_camera.png", alt:'camera-icon', class: 'exhibitionBtn__icon')
+- if user_signed_in?
+  =link_to new_item_path do
+    .exhibitionBtn
+      %p.exhibitionBtn__text 出品する
+      =image_tag("icon/icon_camera.png", alt:'camera-icon', class: 'exhibitionBtn__icon')
+- else
+  =link_to new_user_session_path do
+    .exhibitionBtn
+      %p.exhibitionBtn__text 出品する
+      =image_tag("icon/icon_camera.png", alt:'camera-icon', class: 'exhibitionBtn__icon')

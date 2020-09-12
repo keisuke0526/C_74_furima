@@ -231,54 +231,6 @@ li{
     justify-content: center;
     margin: 34px auto 0 auto;
     padding: 0;
-    &__list{
-      width: 220px;
-      height: 245px;
-      background-color: $main-wh;
-      &__details{
-        position: relative;
-        &__img{
-          width: 220px;
-          height: 150px;
-          object-fit: cover;
-        }
-        &__name{
-          height: 24px;
-          font-size: 16px;
-          margin: 16px 16px 0 16px;
-        }
-        &__price{
-          width: 150px;
-          height: 24px;  
-          font-size: 16px;
-          margin-left: 16px;
-          display: inline-block;
-        }
-        &__favo{
-          font-size: 16px;
-          margin-right: 16px;
-          display: inline;
-        }
-        &__tax{
-          height: 16px;
-          font-size: 10px;
-          margin: 0 16px 16px 16px;
-        }
-        &:hover{
-          opacity: 0.5;
-        }
-        .item__sold {
-          position: absolute;
-          top: 50px;
-          left: 50px;
-          &__inner {
-            font-size: 30px;
-            font-weight: bold;
-            color: red;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -311,43 +263,6 @@ li{
     justify-content: center;
     margin: 34px auto auto auto;
     padding: 0;
-    &__list{
-      width: 220px;
-      height: 245px;
-      background-color: $main-wh;
-      &__details{
-        &__img{
-          width: 220px;
-          height: 150px;
-          object-fit: cover;
-        }
-        &__name{
-          height: 24px;
-          font-size: 16px;
-          margin: 16px 16px 0 16px;
-        }
-        &__price{
-          width: 150px;
-          height: 24px;  
-          font-size: 16px;
-          margin-left: 16px;
-          display: inline-block;
-        }
-        &__favo{
-          font-size: 16px;
-          margin-right: 16px;
-          display: inline;
-        }
-        &__tax{
-          height: 16px;
-          font-size: 10px;
-          margin: 0 16px 16px 16px;
-        }
-        &:hover{
-          opacity: 0.5;
-        }
-      }
-    }
   }
 }
 

@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    @items = Item.joins(:category).where(categories: {id: params[:id]})
   end
 
   def display_categories

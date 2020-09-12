@@ -1,0 +1,107 @@
+.sell-new {
+  width: 100%;
+    height: auto;
+    background: #F5F5F5;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+  &__wrapper {
+    width: 900px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(255, 253, 253);
+  }
+}
+.sell-new__wrapper__nav {
+      font-size: 18px;
+      text-align: center;
+      padding: 16px;
+      border-bottom: solid 1px;
+      border-color: whitesmoke;
+    }
+    .sell-new__form__set {
+      font-size: 14px;
+      width: 343px;
+      height: auto;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 15px;
+        .sell-new__wrapper__form__set__actions {
+          margin-top: 20px;
+    
+          input, textarea, select {
+            padding: 0 125px;
+            background-color: #3ccace;
+            color: white;
+            border: none;
+            height: 50px;
+          }
+        }
+    
+      }
+    
+.field {
+  margin-bottom: 45px;
+  height: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  .attention {
+    background-color: red;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    width: 32px;
+    height: 19px;
+      }
+    input, textarea, select {
+      height: 48px;
+      width: 300px;
+      }
+    .button {
+      margin-top: 20px;
+      text-align: center;
+      input {
+      padding: 0 125px;
+      background-color: #3ccace;
+      color: white;
+      border: none;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+  }
+}
+.attention {
+  background-color: red;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  width: 32px;
+  height: 19px;
+    }
+    .button {
+      margin-top: 20px;
+      text-align: center;
+      input {
+      padding: 0 125px;
+      background-color: #3ccace;
+      color: white;
+      border: none;
+      height: 50px;
+      margin-bottom: 20px;
+      }
+    }
+    .input {
+      padding: 0 125px;
+      background-color: #3ccace;
+      color: white;
+      border: none;
+      height: 50px;
+      margin-bottom: 20px;
+    }

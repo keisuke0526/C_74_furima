@@ -1,9 +1,11 @@
 @import "reset";
-@import "modules/items";
+@import "modules/index";
 @import "modules/header";
 @import "modules/footer";
 @import "modules/exhibitionBtn";
 @import "modules/mypage";
+@import "modules/show";
+@import "modules/itemLists";
 @import "categories/categories";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -15,4 +17,5 @@
 @import "creditcards/new.scss";
 @import "creditcards/creditcards_new_mypageMain";
 @import "creditcards/index";
-@import "creditcards/show"
+@import "creditcards/show";
+@import "items/new";

@@ -1,1 +1,95 @@
-= render partial: 'form'
+.header
+= render "header"
+.sell-new
+  .sell-new__wrapper
+    .sell-new__wrapper__nav
+      .sell-new__wrapper__form
+        .sell-new__wrapper__form__set
+          = form_for @item do |f|
+            %ul
+            - @item.errors.full_messages.each do |message|
+              %li= message
+            .field
+              = f.label :"カテゴリー" 
+              %span.attention 必須
+              %br/
+              = f.collection_select :category_id, Category.all, :id, :name
+            %br/
+            .field
+              = f.label :"ブランド" 
+              任意
+              %br/
+              = f.text_field :brand, placeholder: '例）シャネル'
+            %br/
+            .field
+              = f.label :"商品名" 
+              %span.attention 必須
+              %br/
+              = f.text_field :name, placeholder: '40文字以内'
+            %br/
+            .field
+              = f.label :"商品説明"
+              %span.attention 必須
+              %br/
+              = f.text_field :item_explanation, placeholder: '1000文字以内'
+            %br/
+            .field
+              = f.label :"発送元地域"
+              %span.attention 必須
+              %br/
+              = f.collection_select :shippingarea_id, Shippingarea.all, :id, :name
+            %br/
+            .field
+              = f.label :"商品状態"
+              %span.attention 必須
+              %br/
+              = f.collection_select :itemcondition_id, Itemcondition.all, :id, :name
+            %br/
+            .field
+              =f.label :"配送料の負担"
+              %span.attention 必須
+              %br/
+              = f.collection_select :shippingcost_id, Shippingcost.all, :id, :name
+            %br/
+            .field
+              = f.label :"発送までの日数"
+              %span.attention 必須
+              %br/
+              = f.collection_select :shippingday_id, Shippingday.all, :id, :name
+            %br/
+            .field
+              = f.label :"配送方法" 
+              %span.attention 必須
+              %br/
+              = f.collection_select :shippingmethod_id, Shippingmethod.all, :id, :name
+            %br/
+            .field
+              = f.label :"価格"
+              %span.attention 必須
+              %br/
+              = f.number_field :price
+            %br/
+            .filed
+              = f.label :"商品の画像"
+              %span.attention 必須
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @item.item_imgs.each_with_index do |image, i|
+                    = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+              = f.fields_for :item_imgs do |image|
+                .js-file_group{"data-index" => "#{image.index}"}
+                  = image.file_field :image, class: 'js-file'
+                  %br/
+                  %span.js-remove 添付した画像を削除
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .js-file_group{"data-index" => "#{@item.item_imgs.count}"}
+                  = file_field_tag :image, name: "item[item_imgs_attributes][#{@item.item_imgs.count}][image]", class: 'js-file'
+                  .js-remove 添付した画像を削除
+            .button
+              = f.submit "更新する"
+= render 'items/btmDl'
+.footer
+  = render partial: 'items/footer'

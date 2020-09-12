@@ -16,6 +16,7 @@
         .main__topDl__banner__link
           =link_to "#" do
             =image_tag("badge/google-play.svg", alt:"Google-Play_Banne", class: "main__topDl__banner__link__badge")
+
     %section.main__reason
       .main__reason__title
         %h2.main__reason__title__text FURIMAが選ばれる3つの理由
@@ -42,6 +43,7 @@
             手数料
             %span.main__reason__lists__list__subTitle--mainColor 業界最安
           .main__reason__lists__list__description 最大3%でお得に出品&amp;購入！
+
     %section.main__midDl
       .main__midDl__title 
         会員数日本一位
@@ -58,6 +60,7 @@
         .main__midDl__banner__link
           =link_to "#" do
             =image_tag("badge/google-play.svg", alt:"Google-Play_Banne", class: "main__midDl__banner__link__badge")
+
     %section.main__features
       .main__features__title
         %h2.main__features__title__text FURIMAの特徴
@@ -75,74 +78,29 @@
           =image_tag("icon/icon-04.png", alt:"Exhibition-image", class: "main__features__lists__list__img")
           .main__features__lists__list__subTitle 様々な支払いに対応
           .main__features__lists__list__description お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
     %section.main__pickupCategory
       .main__pickupCategory__title ピックアップカテゴリー
       .main__pickupCategory__newItem
         =link_to "#" do
           新規投稿商品
       %ul.main__pickupCategory__itemLists
-        - @items.each do |item|
-          %li.main__pickupCategory__itemLists__list
-            .main__pickupCategory__itemLists__list__details
-              -#商品詳細ページへのパスに変更する予定
-              = link_to creditcards_path(item.id) do
-                = image_tag (item.item_imgs.first.image.url), alt:"item-picture", class: "main__pickupCategory__itemLists__list__details__img"
-                - if item.buyer_id.present?
-                  .item__sold
-                    .item__sold__inner
-                      SoldOut
-                .main__pickupCategory__itemLists__list__details__name 
-                  = item.name
-                .main__pickupCategory__itemLists__list__details__price 
-                  = item.price
-                .main__pickupCategory__itemLists__list__details__favo
-                  ★０
-                .main__pickupCategory__itemLists__list__details__tax 
-                  (税込み)
-             
+        - @new_items.each do |item|
+          = render "itemList", {item: item}
     %section.main__pickupBrand
       .main__pickupBrand__title ピックアップブランド
       .main__pickupBrand__archive
         =link_to "#" do
           アーカイバ
       %ul.main__pickupBrand__itemLists
-        %li.main__pickupBrand__itemLists__list
-          .main__pickupBrand__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/ee.jpeg", alt:"item-picture", class: "main__pickupBrand__itemLists__list__details__img")
-              .main__pickupBrand__itemLists__list__details__name ee
-              .main__pickupBrand__itemLists__list__details__price 1000en
-              .main__pickupBrand__itemLists__list__details__favo ★０
-              .main__pickupBrand__itemLists__list__details__tax (税込み)
-        %li.main__pickupBrand__itemLists__list
-          .main__pickupBrand__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p3.png", alt:"item-picture", class: "main__pickupBrand__itemLists__list__details__img")
-              .main__pickupBrand__itemLists__list__details__name product3
-              .main__pickupBrand__itemLists__list__details__price 30000円
-              .main__pickupBrand__itemLists__list__details__favo ★０
-              .main__pickupBrand__itemLists__list__details__tax (税込み)
-        %li.main__pickupBrand__itemLists__list
-          .main__pickupBrand__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p2.png", alt:"item-picture", class: "main__pickupBrand__itemLists__list__details__img")
-              .main__pickupBrand__itemLists__list__details__name product2
-              .main__pickupBrand__itemLists__list__details__price 20000円
-              .main__pickupBrand__itemLists__list__details__favo ★０
-              .main__pickupBrand__itemLists__list__details__tax (税込み)
-        %li.main__pickupBrand__itemLists__list
-          .main__pickupBrand__itemLists__list__details
-            =link_to "#" do
-              =image_tag("/pict/p1.png", alt:"item-picture", class: "main__pickupBrand__itemLists__list__details__img")
-              .main__pickupBrand__itemLists__list__details__name product1
-              .main__pickupBrand__itemLists__list__details__price 10000円
-              .main__pickupBrand__itemLists__list__details__favo ★1
-              .main__pickupBrand__itemLists__list__details__tax (税込み)
+        - @rnd_items.each do |item|
+          - unless item.buyer_id.presence
+            = render "itemList_noView_soldItem", {item: item}
     %section.main__btmDl
       = render "btmDl"
 
-    .footer
-      = render "footer"
+  
+  = render "footer"
     
-    = render "exhibitionBtn"
+  = render "exhibitionBtn"
   

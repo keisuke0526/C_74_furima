@@ -1,5 +1,5 @@
--#header,footer,ともに部分テンプレートを使用する
 .main
+  = render partial: "items/header"
   .main__box
     .main__box__down--contents
       .categories--title
@@ -12,17 +12,27 @@
             = link_to category.name, category_path(category)
 
       .products
-        .product
-          = link_to do
-            %figure.product--image
-              %img{src: "/assets/mako_image.png", height: "150px", width: "230px"}
-            -#商品詳細ページへのリンクを貼る
-            -#出品商品がないときには表示させないか、soldoutと写真に表示できるようにする
-            .product--body
-              %h2.name 商品  
-              .details
-                %ul
-                  %li 1000円
-                  %li.fa.fa-star
-                    1
-                %p <税込>
+        - @items.each do |item|
+          .product
+            = link_to do
+              %figure.product--image
+                = image_tag (item.item_imgs.first.image.url)
+                - if item.buyer_id.present?
+                  .item__sold
+                    .item__sold__inner
+                      SoldOut
+              .product--body
+                %h2.name 
+                  = item.name  
+                .details
+                  %ul
+                    %li
+                      = item.price
+                    %li.fa.fa-star
+                      1
+                  %p <税込>
+                  -#時間があればページネイションを作る、今のところ表示できるのは3つまで
+%section.main__btmDl
+  = render "items/btmDl"
+.footer
+  = render partial: "items/footer"

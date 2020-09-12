@@ -1,0 +1,16 @@
+%li.itemLists__list
+  .itemLists__list__details
+    = link_to item_path(item.id) do
+      = image_tag (item.item_imgs.first.image.url), alt:"item-picture", class: "itemLists__list__details__img"
+      - if item.buyer_id.present?
+        .item__sold
+          .item__sold__inner
+            SoldOut
+      .itemLists__list__details__name 
+        = item.name
+      .itemLists__list__details__price 
+        = item.price
+      .itemLists__list__details__favo
+        ★０
+      .itemLists__list__details__tax 
+        (税込み)

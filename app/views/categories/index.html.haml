@@ -1,30 +1,29 @@
 .header
   = render partial: "items/header"
-.container
-  .container__box
-    .container__box__up--contents
+.goodsContainer
+  .goodsContainer__box
+    .goodsContainer__box__up--contents
       = link_to image_tag("/assets/mako_image.png", width: "100%", height: "100%")
-    .container__box__down--contents
-      .category
-        .category__parent
+    .goodsContainer__box__down--contents
+      .goodsCategory
+        .goodsCategory__parent
           - @parents.each do |parent|
             = link_to parent.name, { anchor: parent.id }
 
-      .category--title
-        .category-title__parents
+      .goodsCategory--title
+        .goodsCategory-title__parents
           - @parents.each do |parent|
-            -# parent.idをidに指定していいのか？
-            .category--title__parents__parent{ id: parent.id } 
+            .goodsCategory--title__parents__parent{ id: parent.id } 
               = link_to parent.name, category_path(parent), class: "parentLink"
 
-            .category--title__childs
+            .goodsCategory--title__childs
               - parent.children.each do |child|
-                .category--title__childs__child
+                .goodsCategory--title__childs__child
                   = link_to child.name, category_path(child), class: "childLink"
                 
-                  .category--title__childs__child__glandchilds
+                  .goodsCategory--title__childs__child__glandchilds
                     - child.children.each do |grandchild|
-                      .category--title__childs__child__glandchilds__glandchild
+                      .goodsCategory--title__childs__child__glandchilds__glandchild
                         = link_to grandchild.name, category_path(grandchild), class: "grandchildreLink"
             
               .upBottom
@@ -33,6 +32,6 @@
                   ページトップへ
 %section.main__btmDl
   = render "items/btmDl"
-.footer
-  = render partial: "items/footer"
+
+= render partial: "items/footer"
 = render partial: "items/exhibitionBtn"

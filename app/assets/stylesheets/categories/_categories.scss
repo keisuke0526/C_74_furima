@@ -1,4 +1,4 @@
-.container { 
+.goodsContainer { 
   &__box {
     background-color: $bg-wh;
     padding-bottom: 32px;
@@ -10,7 +10,7 @@
     &__down--contents {
       width: 700px;
       margin: 0 auto;
-      .category {
+      .goodsCategory {
         &__parent {
           display: flex;
           flex-wrap: wrap;
@@ -33,7 +33,7 @@
           background: #3CCACE;
         }
       }
-      .category--title {
+      .goodsCategory--title {
         &__parents {
           border-radius: 6px;
           &__parent {
@@ -105,13 +105,14 @@
     }
   }
 }
-      
-
+//=====================================================
+   //show.html.hamlのCSS
+//=====================================================    
 
 .main {
   &__box {
     background-color: #F8F8F8;
-    padding-bottom: 36px;
+    padding:36px 0 36px 0;
     &__down--contents {
       width: 700px;
       margin: 0 auto;
@@ -161,24 +162,37 @@
       }
       
       
+      
       .products {
         margin:30px 0;
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
         .product {
-          width: 230px;
-          position: relative;
-          /*aタグの入子構造が間違っているのか
-          hoverを効かせたいができていな。修正の必要あり
-          とりあえず機能するかは分からないが.productにhoverを
-          かけている状態*/
+          margin: 32px 0 0 10px;
           a {
             text-decoration: none;
+            display: inline-block;
+            width: 220px;
+            height: 150px;
             figure.product--image {
-              height: 136px;
+              margin: 0 10px 0 0;
+              height: 100%;
+              position: relative;
               img {
+                width: 220px;
+                height: 150px;
+                //中央でトリミングされる記述、非強な状況ではないけれど勉強したので残してます。
+                object-fit: cover;
+              }
+              .item__sold {
                 position: absolute;
-                left: 0;
+                top: 50px;
+                left: 50px;
+                &__inner {
+                  font-size: 30px;
+                  font-weight: bold;
+                  color: red;
+                }
               }
             }
             .product--body {
@@ -211,4 +225,4 @@
       }
     }
   }
-}       
+}

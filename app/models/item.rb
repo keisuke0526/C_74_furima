@@ -34,5 +34,5 @@ class Item < ApplicationRecord
   validates :shippingcost_id, presence: true
   validates :shippingday_id, presence: true
   validates :item_imgs, presence: true
-  #validates :seller_id, presence: true
+  validates :seller_id, presence: true
 end

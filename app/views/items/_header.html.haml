@@ -1,15 +1,15 @@
 .headerUpper
-  =link_to "#" do
+  =link_to root_path do
     .headerUpper__link
       =image_tag("logo/logo.png", alt:'FURIMA-logo', class: 'headerUpper__link__logo')
   =form_for "#" ,class:'headerUpper__form' do |form|
     =form.text_field :content, class:'headerUpper__form__field', placeholder:"キーワードから探す"
     =form.button '' , class:'headerUpper__form__btn' do
-      =image_tag("/assets/icon/icon-search 1.png", alt:'Form-botton', class: 'headerUpper__form__btn__icon')
+      =image_tag("icon/icon-search 1.png", alt:'Form-botton', class: 'headerUpper__form__btn__icon')
 
 .headerLower
   .headerLower__left
-    =link_to "#" do
+    =link_to categories_path do
       カテゴリー
     =link_to "#" do
       ブランド
@@ -25,5 +25,6 @@
         ログイン
       =link_to new_user_registration_path do
         新規会員登録
+
 
 

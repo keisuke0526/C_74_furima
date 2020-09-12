@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :categories, only: [:index, :show] 
-  resources :items, except: :show
+  resources :items
   #get 'items',to: 'categories/show'
   resources :creditcards, only: [:index, :new, :create, :show, :destroy] do
     member do

@@ -1,0 +1,143 @@
+%body
+  = render "header"
+
+  .category
+    %ul.category__list
+      %li
+        = link_to "#" do
+          FURIMA 
+      %li
+        >
+      %li
+        = link_to "#" do
+          = @item.category.parent.parent.name
+      %li
+        >
+      %li
+        = link_to "#" do
+          = @item.category.parent.name
+      %li
+        >
+      %li
+        = link_to "#" do
+          = @item.category.name
+      %li
+        >
+      %li
+        = link_to "#" do
+          = @item.name
+
+  .itemInfo
+    .itemInfo__box
+      .itemInfo__box__name
+        = @item.name
+      .itemInfo__box__firstImage
+        = image_tag(@item.item_imgs.first.image.url)
+      %li.itemInfo__box__imageList
+        - @item.item_imgs.each do |img|
+          %ul.itemInfo__box__imageList__images
+            = image_tag(img.image.url)
+      .itemInfo__box__price
+        ¥
+        = @item.price
+      .itemInfo__box__otherFee
+        (税込)送料込み
+          
+      .itemInfo__box__explaination
+        = @item.item_explanation
+      %table.itemInfo__box__table
+        %tr
+          %th
+            出品者
+          %td.itemInfo__box__table__data.itemInfo__box__table__data--seller
+            = @item.seller.nickname
+            - if user_signed_in? && current_user.id == @item.seller_id
+              .itemInfo__box__table__data__btn
+                = link_to "記載内容を編集する", edit_item_path(@item.id), class:"itemInfo__box__table__data__btn__edit"
+                = link_to "商品を削除する", item_path(@item.id), method: "delete", class:"itemInfo__box__table__data__btn__delete"
+        %tr
+          %th
+            カテゴリー
+          %td.itemInfo__box__table__data
+            %ul
+              = link_to "#" do
+                = @item.category.parent.parent.name             
+            %ul
+              = link_to "#" do
+                = @item.category.parent.name 
+            %ul
+              = link_to "#" do
+                = @item.category.name
+        %tr
+          %th
+            ブランド
+          %td.itemInfo__box__table__data
+            = @item.brand
+        %tr
+          %th
+            商品の状態
+          %td.itemInfo__box__table__data
+            = @item.itemcondition.name
+        %tr
+          %th
+            送料の負担
+          %td.itemInfo__box__table__data
+            = @item.shippingcost.name
+        %tr
+          %th
+            発送元の地域
+          %td.itemInfo__box__table__data
+            = @item.shippingarea.name
+        %tr
+          %th
+            発送日の目安
+          %td.itemInfo__box__table__data
+            = @item.shippingday.name
+      .itemInfo__box__lower
+        .itemInfo__box__lower__favo
+          ★ お気に入り
+        .itemInfo__box__lower__report
+          不適切な商品の通報
+
+  .comment
+    .comment__box
+      =form_for "#" ,class:'comment__box__form' do |form|
+        =form.text_area :content, class:'comment__box__form__textArea'
+        %p.comment__box__form__notice
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .comment__box__form__lower
+          =form.button '#', class:"comment__box__form__lower__btn" do
+            コメントする
+  
+  .otherItems
+    .otherItems__side
+      .otherItems__side__prev
+        =link_to "#" do
+          < 前の商品
+      .otherItems__side__next
+        =link_to "#" do
+          後ろの商品 >
+    .otherItems__category
+      =link_to "#" do
+        = @item.category.parent.parent.name
+        をもっと見る。
+    %ul.otherItems__itemLists
+      - @items.each do |item|
+        = render "itemList", {item: item}
+       
+  = render "btmDl"
+
+  
+  = render "footer"
+
+  .fixedBtn
+    - if user_signed_in? && current_user.id != @item.seller_id
+      =link_to "#" do
+        =image_tag("icon/purch.png", alt:'purch-icon', class: 'fixedBtn__purch')
+    %end
+    - unless user_signed_in?
+      =link_to new_user_session_path do
+        =image_tag("icon/login.png", alt:'login-icon', class: 'fixedBtn__login')
+    %end
+    = render "exhibitionBtn"
