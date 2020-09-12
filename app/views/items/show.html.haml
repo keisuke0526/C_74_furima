@@ -133,7 +133,7 @@
 
   .fixedBtn
     - if user_signed_in? && current_user.id != @item.seller_id
-      =link_to "#" do
+      =link_to creditcard_path do
         =image_tag("icon/purch.png", alt:'purch-icon', class: 'fixedBtn__purch')
     %end
     - unless user_signed_in?
