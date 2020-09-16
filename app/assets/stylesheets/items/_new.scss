@@ -105,3 +105,102 @@
       height: 50px;
       margin-bottom: 20px;
     }
+
+.category{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+//edited
+
+.sell-new {
+  width: 100%;
+  height: auto;
+  background: $bg-wh;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &__wrapper {
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    background-color: $main-wh;
+    &__form {
+    width: 343px;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 15px;
+      &__field {
+        height: 48px;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 45px;
+        &--append{
+          height: 48px;
+          font-size: 18px;
+          text-align: center;
+          margin-bottom: 45px;
+        }
+        &__attention {
+          background-color: red;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          width: 32px;
+          height: 19px;
+        }
+        &__attention-black {
+          font-size: 14px;
+        }
+        & input, textarea, select {
+          height: 48px;
+          width: 300px;
+        }
+      }
+      &__img{
+        height: 28px;
+        font-size: 18px;
+        text-align: center;
+        &__attention {
+          background-color: red;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          width: 32px;
+          height: 19px;
+        }
+      }
+      &__button {
+        margin-top: 20px;
+        text-align: center;
+        input {
+          height: 50px;
+          padding: 0 125px;
+          background-color: $main-bu;
+          color: $main-wh;
+          margin-bottom: 20px;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+.append__category{
+  width: 343px;
+  height: auto;
+}
+
+#image-box{
+  font-size: 18px;
+}
+
+.js-remove{
+  margin: 0 auto;
+}

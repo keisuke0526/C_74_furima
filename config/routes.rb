@@ -11,8 +11,14 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :categories, only: [:index, :show] 
-  resources :items
-  #get 'items',to: 'categories/show'
+  
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: {format: 'json'}
+      get 'get_category_grandchildren', defaults: {format: 'json'}
+    end
+  end
+
   resources :creditcards, only: [:index, :new, :create, :show, :destroy] do
     member do
       post 'pay'

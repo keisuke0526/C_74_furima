@@ -3,29 +3,14 @@
 
   .category
     %ul.category__list
-      %li
-        = link_to "#" do
-          FURIMA 
-      %li
-        >
-      %li
-        = link_to "#" do
-          = @item.category.parent.parent.name
-      %li
-        >
-      %li
-        = link_to "#" do
-          = @item.category.parent.name
-      %li
-        >
-      %li
-        = link_to "#" do
-          = @item.category.name
-      %li
-        >
-      %li
-        = link_to "#" do
-          = @item.name
+      - breadcrumb :category_index
+      - if @category.root?
+        - breadcrumb :parent_category
+      - elsif @category.has_children?
+        - breadcrumb :child_category
+      - else
+        - breadcrumb :grandchild_category
+      = render "layouts/breadcrumbs"
 
   .itemInfo
     .itemInfo__box
@@ -33,6 +18,9 @@
         = @item.name
       .itemInfo__box__firstImage
         = image_tag(@item.item_imgs.first.image.url)
+        - if @item.buyer_id.present?
+          .itemInfo__box__firstImage__sold
+            SoldOut
       %li.itemInfo__box__imageList
         - @item.item_imgs.each do |img|
           %ul.itemInfo__box__imageList__images
@@ -53,8 +41,12 @@
             = @item.seller.nickname
             - if user_signed_in? && current_user.id == @item.seller_id
               .itemInfo__box__table__data__btn
-                = link_to "記載内容を編集する", edit_item_path(@item.id), class:"itemInfo__box__table__data__btn__edit"
-                = link_to "商品を削除する", item_path(@item.id), method: "delete", class:"itemInfo__box__table__data__btn__delete"
+                = link_to edit_item_path(@item.id), class:"itemInfo__box__table__data__btn__edit" do
+                  = icon('fa','edit') 
+                  %span 記載内容を編集する
+                = link_to item_path(@item.id), method: "delete", class:"itemInfo__box__table__data__btn__delete" do
+                  = icon('far','minus-square')
+                  %span 商品を削除する
         %tr
           %th
             カテゴリー
@@ -95,9 +87,11 @@
             = @item.shippingday.name
       .itemInfo__box__lower
         .itemInfo__box__lower__favo
-          ★ お気に入り
+          = icon('fa','star') 
+          %span お気に入り
         .itemInfo__box__lower__report
-          不適切な商品の通報
+          = icon('fa','flag') 
+          %span 不適切な商品の通報
 
   .comment
     .comment__box
