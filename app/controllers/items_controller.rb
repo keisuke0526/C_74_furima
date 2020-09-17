@@ -32,10 +32,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def show
     @items = Item.includes(:item_imgs).where(category_id: @item.category_id).where.not(id: @item.id).order('RAND()').limit(4)
+    @category = Category.find(params[:id])
   end
 
   def update
