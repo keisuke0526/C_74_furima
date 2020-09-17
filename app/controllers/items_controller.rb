@@ -32,7 +32,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def show

@@ -11,7 +11,11 @@
           = f.label :"カテゴリー" 
           %span.sell-new__wrapper__form__field__attention 必須
           %br/
-          =f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください"},class:"serect_field"
+          =f.collection_select :category_id, @item.category.root.siblings, :id, :name, class:"serect_field"
+          #children_wrapper 
+            =f.collection_select :category_id, @item.category.parent.siblings, :id, :name, class:"serect_field"
+          #grandchildren_wrapper
+            =f.collection_select :category_id, @item.category.siblings, :id, :name, class:"serect_field"
           
         .sell-new__wrapper__form__field
           = f.label :"ブランド" 

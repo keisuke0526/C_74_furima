@@ -35,6 +35,18 @@ ja:
         birth_year: 生年
         birth_month: 生月
         birth_day: 生日
+      shipping_info:
+        family_name: 苗字
+        first_name: 名前
+        family_name_kana: 苗字(カナ)
+        family_name_kana: 名前(カナ)
+        first_name_kana: 苗字(カナ)
+        first_name: 名前(カナ)
+        postcode: 郵便番号
+        prefecture: 都道府県
+        city: 市町村
+        house_number: 番地
+
 
     models:
       user: ユーザ

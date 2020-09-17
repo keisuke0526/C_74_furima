@@ -26,13 +26,12 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }
   validates :item_explanation, presence: true, length: { maximum: 1000 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  #validates :dealing, presence: true#取引状況は後。商品出品タスクの項目に入ってないので。
-  validates :shippingarea, presence: true
-  validates :category_id, presence: true
-  validates :itemcondition_id, presence: true
-  validates :shippingmethod_id, presence: true
-  validates :shippingcost_id, presence: true
-  validates :shippingday_id, presence: true
+  validates :shippingarea_id, numericality: { other_than: 0 }
+  validates :itemcondition_id, numericality: { other_than: 0 }
+  validates :shippingmethod_id, numericality: { other_than: 0 }
+  validates :shippingcost_id, numericality: { other_than: 0 }
+  validates :shippingday_id, numericality: { other_than: 0 }
   validates :item_imgs, presence: true
   validates :seller_id, presence: true
+  #validates :dealing, presence: true#取引状況は後。商品出品タスクの項目に入ってないので。
 end
