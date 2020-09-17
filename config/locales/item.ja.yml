@@ -7,7 +7,7 @@ ja:
         item_explanation: 商品説明
         item_imgs: 商品画像
         category: カテゴリー
-        shippingarea_id: 配送元地域
+        shippingarea_id: 発送元地域
         itemcondition_id: 商品状態
         shippingmethod_id: 配送方法
         shippingcost_id: 配送料の負担

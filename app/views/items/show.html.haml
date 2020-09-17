@@ -53,10 +53,10 @@
           %td.itemInfo__box__table__data
             %ul
               = link_to "#" do
-                = @item.category.name             
+                = @item.category.parent.parent.name             
             %ul
               = link_to "#" do
-                = @item.category.name 
+                = @item.category.parent.name 
             %ul
               = link_to "#" do
                 = @item.category.name
@@ -114,7 +114,7 @@
           後ろの商品 >
     .otherItems__category
       =link_to "#" do
-        = @item.category.name
+        = @item.category.parent.parent.name
         をもっと見る。
     %ul.otherItems__itemLists
       - @items.each do |item|
