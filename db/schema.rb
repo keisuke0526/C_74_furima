@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_085553) do
+ActiveRecord::Schema.define(version: 2020_09_18_044551) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,20 @@ ActiveRecord::Schema.define(version: 2020_08_04_085553) do
     t.index ["user_id"], name: "index_shipping_infos_on_user_id"
   end
 
+  create_table "sign_ups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "family_name", null: false
@@ -102,4 +116,5 @@ ActiveRecord::Schema.define(version: 2020_08_04_085553) do
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "shipping_infos", "users"
+  add_foreign_key "sns_credentials", "users"
 end

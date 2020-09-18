@@ -1,0 +1,24 @@
+@import "config/variable2";
+
+.form-body__top {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #FFFFFF;
+  height: 287px;
+  margin: 0 auto;
+  padding: 40px 40px 64px 40px;
+  width: 700px;
+  &--mail {
+    background-color: #EA352D;
+    @include sns-btn 
+  }
+  &--facebook {
+    background-color: #385185;
+    @include sns-btn 
+  }
+  &--google {
+    background-color: #979797;
+    @include sns-btn 
+  }
+}

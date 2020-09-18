@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'users/new_address', to: 'users/registrations#new_address'
     post 'users/create_address', to: 'users/registrations#create_address'
+    get 'index', to: 'users/registrations#index'
   end
 
-  resources :users, only: [:show]
+  resources :users, only: :show
+
 
   root 'items#index'
   resources :categories, only: [:index, :show] 

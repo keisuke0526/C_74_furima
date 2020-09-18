@@ -1,0 +1,24 @@
+.header
+  = render partial: 'items/header'
+.registrations-new
+  .registrations-new__wrapper
+    .form-haad
+      新規会員登録
+    .form-body
+      .form-body__top
+        = link_to new_user_registration_path, class: 'form-body__top--mail' do
+          %i
+          = icon("fa", "envelope")
+          メールアドレスで登録する
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'form-body__top--facebook' do
+          %i
+          = icon("fab", "facebook-square")
+          Facebookで登録する
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'form-body__top--google' do
+          %i
+          = icon("fab", "google")
+          Googleで登録する
+
+= render 'items/btmDl'
+= render partial: 'items/footer'
+= render partial: 'items/exhibitionBtn' 

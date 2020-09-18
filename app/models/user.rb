@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   
   validates :nickname, presence: true, length: {maximum: 20}
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
@@ -22,5 +22,23 @@ class User < ApplicationRecord
   # has_many :evaluations, dependent: :destroy
   has_many :seller_items, foreign_key: :seller_id, dependent: :destroy
   has_many :buyer_items, foreign_key: :buyer_id, dependent: :destroy
+  has_many :sns_credentials
   #理由はまだわからないのですが、dependent: :destroyをつけないとアソシエーションは組めなかったです
+
+  def self.from_omniauth(auth)
+    sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
+    # sns認証したことがあればアソシエーションで取得
+    # 無ければemailでユーザー検索して取得orビルド(保存はしない)
+    user = sns.user || User.where(email: auth.info.email).first_or_initialize(
+      nickname: auth.info.name,
+        email: auth.info.email
+    )
+    # userが登録済みの場合はそのままログインの処理へ行くので、ここでsnsのuser_idを更新しておく
+    if user.persisted?
+      sns.user = user
+      sns.save
+    end
+    { user: user, sns: sns }
+  end
+  
 end
